@@ -37,16 +37,22 @@
 ### Word Representations
 * [SENNA](https://ronan.collobert.com/senna/download.html)
 1. Download SENNA from the website
-2. Run bash command in path /senna:
+2. Run bash command in path /senna to create the final embedding file
 ```
 paste hash/words.lst embeddings/embeddings.txt > emb.txt
 ```
 * [ELMo](https://github.com/allenai/allennlp/tree/v0.6.1)
 
 ### Data Format
+#### SENNA embedding
+```
+// SENNA embedding (50 dimension, 130,000 words in total)
+love    0.950697 0.235026 0.359608 ... 0.61339
+love-hate       1.91746 1.63426 0.530458 ... 0.459215
+```
 #### CoNLL-2005
 ```
-0:WORD 1:POS 2:PARSE 3:NE 4:FRAME 5:LEMMA 6-:ARGS
+// 0:WORD 1:POS 2:PARSE 3:NE 4:FRAME 5:LEMMA 6-:ARGS
 Ms. NNP      (S1(S(NP*         *    -   -       (A0*
 Haag NNP             *)    (LOC*)   -   -          *)
 plays VBZ         (VP*         *    02  play     (V*)
@@ -56,7 +62,7 @@ Elianti NNP       (NP*))       *    -   -       (A1*)
 
 #### CoNLL-2012
 ```
-0:DOCUMENT 1:PART 2:INDEX 3:WORD 4:POS 5:PARSE 6:LEMMA 7:FRAME 8:SENSE 9:SPEAKER 10:NE 11-N:ARGS N:COREF
+// 0:DOCUMENT 1:PART 2:INDEX 3:WORD 4:POS 5:PARSE 6:LEMMA 7:FRAME 8:SENSE 9:SPEAKER 10:NE 11-N:ARGS N:COREF
 bc/cctv/00/cctv_0001   0   0           This    DT  (TOP(S(NP*         -    -   -   Speaker#1        *   (ARG2*   (61
 bc/cctv/00/cctv_0001   0   1            map    NN           *)        -    -   -   Speaker#1        *        *)   61)
 bc/cctv/00/cctv_0001   0   2      reflected   VBD        (VP*    reflect  01   1   Speaker#1        *      (V*)    -
@@ -66,6 +72,10 @@ bc/cctv/00/cctv_0001   0   5    battlefield    NN           *         -    -   -
 bc/cctv/00/cctv_0001   0   6      situation    NN           *))       -    -   -   Speaker#1        *        *)    -
 bc/cctv/00/cctv_0001   0   7              .     .           *))       -    -   -   Speaker#1        *        *     -
 ```
+[Attention] 
+1. Samples should be separated by an empty line
+2. Remember to remove illegal lines in CoNLL-2012 dataset, e.g.
+#Start of Document, #end of document
 
 
 ## Usage
