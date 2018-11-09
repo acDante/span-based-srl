@@ -357,5 +357,6 @@ class Trainer(object):
         if argv.output_fn:
             fn += '/param.%s' % argv.output_fn
         else:
-            fn += '/param.%s.best' % argv.method
+            # fn += '/param.%s.best' % argv.method
+            fn += '/param.%s.best' % argv.mode
         save_pickle(fn=fn, data=best_param)

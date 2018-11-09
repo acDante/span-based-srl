@@ -36,6 +36,11 @@
 * We create the dataset by following the process described at http://cemantix.org/data/ontonotes.html
 ### Word Representations
 * [SENNA](https://ronan.collobert.com/senna/download.html)
+1. Download SENNA from the website
+2. Run bash command in path /senna:
+```
+paste hash/words.lst embeddings/embeddings.txt > emb.txt
+```
 * [ELMo](https://github.com/allenai/allennlp/tree/v0.6.1)
 
 ### Data Format
