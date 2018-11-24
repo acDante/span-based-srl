@@ -27,6 +27,37 @@
 * [Theano](http://deeplearning.net/software/theano/)
 * [h5py](https://www.h5py.org/)
 
+## Installation
+```
+conda install -c conda-forge theano
+conda install -c anaconda h5py
+conda install mkl-service
+```
+
+## Training on GPU
+Attention: Only support cuda-8.0
+### Theano configuration (.theanorc)
+```
+# cuda inatall dir
+[cuda]
+root=/usr/local/cuda-8.0
+
+[dnn]
+enable=True
+include_path=/usr/local/cuda-8.0/include
+library_path=/usr/local/cuda-8.0/lib64
+
+[lib]
+cnmem = 0.8
+
+[global]
+device = cuda
+floatX = float32
+mode=FAST_RUN
+
+[nvcc]
+fastmath = True
+```
 
 ## Data
 ### CoNLL-2005
@@ -50,7 +81,7 @@ paste hash/words.lst embeddings/embeddings.txt > emb.txt
 love    0.950697 0.235026 0.359608 ... 0.61339
 love-hate       1.91746 1.63426 0.530458 ... 0.459215
 ```
-#### CoNLL-2005
+#### CoNLL-2005 Training & Development Sets
 ```
 // 0:WORD 1:POS 2:PARSE 3:NE 4:FRAME 5:LEMMA 6-:ARGS
 Ms. NNP      (S1(S(NP*         *    -   -       (A0*
@@ -59,7 +90,16 @@ plays VBZ         (VP*         *    02  play     (V*)
 Elianti NNP       (NP*))       *    -   -       (A1*)
 . .                  *))       *    -   -          *
 ```
-
+#### CoNLL-2005 Test Set (Not including FRAME ID)
+```
+0:WORD 1:POS 2:PARSE 3:NE 4:LEMMA 5-:ARGS
+The                DT     (S1(S(NP*         *                 (A1*
+finger-pointing    JJ             *)        *    -               *)
+has                AUX         (VP*         *    -               *
+already            RB        (ADVP*)        *    -        (AM-TMP*)
+begun              VBN         (VP*))       *    begin         (V*)
+.
+```
 #### CoNLL-2012
 ```
 // 0:DOCUMENT 1:PART 2:INDEX 3:WORD 4:POS 5:PARSE 6:LEMMA 7:FRAME 8:SENSE 9:SPEAKER 10:NE 11-N:ARGS N:COREF
