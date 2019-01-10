@@ -143,6 +143,10 @@ class Sent(object):
         self.span_triples = triples
 
     def set_span_triples_with_null(self, n_labels):
+        print("Span triples:=")
+        print(self.span_triples)
+        print("Predicate indces :=")
+        print(self.prd_indices)
         assert len(self.span_triples) == len(self.prd_indices)
         triples_with_null = []
         for prd_index, spans in zip(self.prd_indices, self.span_triples):
