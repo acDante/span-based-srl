@@ -147,6 +147,7 @@ class Sent(object):
         print(self.span_triples)
         print("Predicate indces :=")
         print(self.prd_indices)
+        print(self.strings)
         assert len(self.span_triples) == len(self.prd_indices)
         triples_with_null = []
         for prd_index, spans in zip(self.prd_indices, self.span_triples):
