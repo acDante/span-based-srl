@@ -14,7 +14,7 @@ class Tester(object):
         self.evaluator = Evaluator(argv)
         self.loader = Conll05Loader(argv) if argv.data_type == "conll05" else CoNLL12Loader(argv)
         self.saver = Saver(argv)
-
+    
     def predict(self):
         argv = self.argv
         pproc = self.preprocessor

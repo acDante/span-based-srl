@@ -265,7 +265,7 @@ class Trainer(object):
         #################
         if argv.word_emb:
             write('Loading Embeddings...')
-            word_list_emb, word_emb = load_emb(argv.init_emb)
+            word_list_emb, word_emb = load_emb(argv.word_emb)
             vocab_word = pproc.make_vocab_word(word_list_emb)
             write('\t- # Embedding Words: %d' % vocab_word.size())
         else:
